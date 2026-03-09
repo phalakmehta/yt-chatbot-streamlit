@@ -1,0 +1,11 @@
+streamlit
+flask-cors
+groq
+youtube-transcript-api
+langchain
+langchain-groq
+langchain-community
+langchain-text-splitters
+langchain-core
+faiss-cpu
+sentence-transformers
