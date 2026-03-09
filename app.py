@@ -66,7 +66,7 @@ def build_chain(video_id: str):
     from langchain_core.runnables import RunnableParallel, RunnablePassthrough, RunnableLambda
     from langchain_core.output_parsers import StrOutputParser
 
-    transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=["en"])
+    transcript_list = YouTubeTranscriptApi().fetch(video_id, languages=["en"]).to_raw_data()
     transcript = " ".join(chunk["text"] for chunk in transcript_list)
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
