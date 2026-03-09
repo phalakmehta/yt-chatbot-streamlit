@@ -1,5 +1,4 @@
 streamlit
-flask-cors
 groq
 youtube-transcript-api
 langchain
