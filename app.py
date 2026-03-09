@@ -18,7 +18,6 @@ st.markdown("""
 st.title("▶️ YT Chatbot")
 st.caption("RAG-powered video chat · LangChain · FAISS · Groq")
 
-# ── session state ──
 if "chain" not in st.session_state:
     st.session_state.chain = None
 if "video_id" not in st.session_state:
@@ -53,7 +52,7 @@ def get_embeddings():
 def get_llm():
     from langchain_groq import ChatGroq
     return ChatGroq(
-        model="openai/gpt-oss-120b",
+        model="llama3-8b-8192",
         temperature=0.2,
         api_key=os.environ.get("GROQ_API_KEY"),
     )
@@ -67,7 +66,6 @@ def build_chain(video_id: str):
     from langchain_core.runnables import RunnableParallel, RunnablePassthrough, RunnableLambda
     from langchain_core.output_parsers import StrOutputParser
 
-    
     transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=["en"])
     transcript = " ".join(chunk["text"] for chunk in transcript_list)
 
@@ -102,7 +100,6 @@ Question: {question}
     return chain
 
 
-# ── URL input ──
 with st.container():
     url = st.text_input("YouTube URL", placeholder="https://youtube.com/watch?v=...")
     if st.button("Load Video", use_container_width=True):
@@ -122,14 +119,12 @@ with st.container():
 
 st.divider()
 
-# ── chat messages ──
 for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.markdown(f'<div class="label" style="color:#ff7a3f90">You</div><div class="user-msg">{msg["content"]}</div>', unsafe_allow_html=True)
     else:
         st.markdown(f'<div class="label" style="color:#ff3f3f80">Assistant</div><div class="bot-msg">{msg["content"]}</div>', unsafe_allow_html=True)
 
-# ── chat input ──
 if st.session_state.chain:
     question = st.chat_input("Ask about the video...")
     if question:
