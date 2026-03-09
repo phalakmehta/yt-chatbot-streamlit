@@ -1,6 +1,6 @@
 streamlit
 groq
-youtube-transcript-api
+youtube_transcript_api
 langchain
 langchain-groq
 langchain-community
