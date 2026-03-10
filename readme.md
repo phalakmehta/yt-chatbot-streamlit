@@ -2,7 +2,8 @@
 
 *RAG-powered YouTube Video Chat · LangChain · FAISS · Groq*
 
-![](media/49503effaa774dc9577a11a8f1007c6b8f03b024.png){width="5.208333333333333in" height="3.2291666666666665in"}
+<img width="1550" height="693" alt="image" src="https://github.com/user-attachments/assets/e57299c6-232e-4d3e-98f0-d94990df6ad4" />
+
 
 What is it?
 
